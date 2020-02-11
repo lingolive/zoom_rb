@@ -10,7 +10,7 @@ describe Zoom::Actions::User do
     context 'with a valid response' do
       before :each do
         stub_request(
-          :patch,
+          :put,
           zoom_url("/users/#{args[:id]}/status")
         ).to_return(status: 204,
                     body: '',
@@ -28,7 +28,7 @@ describe Zoom::Actions::User do
     context 'with a 4xx response' do
       before :each do
         stub_request(
-          :patch,
+          :put,
           zoom_url("/users/#{args[:id]}/status")
         ).to_return(status: 404,
                     body: json_response('error', 'validation'),
