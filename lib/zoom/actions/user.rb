@@ -104,7 +104,7 @@ module Zoom
       def user_status_update(*args)
         params = Zoom::Params.new(Utils.extract_options!(args))
         params.require(:id).permit(:action)
-        Utils.parse_response self.class.patch("/users/#{params[:id]}/status", body: params.except(:id), headers: request_headers)
+        Utils.parse_response self.class.put("/users/#{params[:id]}/status", body: params.except(:id), headers: request_headers)
       end
 
       def user_password_update(*args)
